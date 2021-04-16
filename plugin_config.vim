@@ -102,7 +102,7 @@ let g:NERDTreeHighlightCursorline = 0
 
 ">> NERDTREE-GIT
 " Special characters
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
