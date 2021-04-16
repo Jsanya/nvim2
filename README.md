@@ -1,3 +1,4 @@
 # nvim-dotfiles
 
-Saját konfigurációs fájlok
+Saját konfigurációs fájlok a neovim szerkesztőhöz
+
