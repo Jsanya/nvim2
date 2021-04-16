@@ -40,7 +40,7 @@ let g:perjel = g:os_win ? '\' : '/'
 let g:nvim_config_dir = stdpath('config')
 let g:nvim_plugin_dir = stdpath('data').'/plugged'
 
-" Konfig fájlok listája (fontos a sorrend!)
+" Konfig fájlok listája lefutási sorrendben.
 let g:configfiles = [
     \ 'general.vim',
     \ 'plugin_list.vim',
@@ -50,9 +50,6 @@ let g:configfiles = [
 for s:fnev in g:configfiles
     execute 'source ' . g:nvim_config_dir . '/' . s:fnev
 endfor
-
-" python 2 kikapcs
-" let g:loaded_python_provider=0
 
 " A python3 elérhetőségének biztosítása az aktuális op-rendszerben:
 if executable('python3')

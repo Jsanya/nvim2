@@ -21,15 +21,23 @@ if (has("termguicolors"))
 endif
 
 " Karakter kódolás utf8
-set fileencoding=utf-8
-scriptencoding utf-8
-set encoding=utf-8
-set fileformats=unix,mac,dos
+" set fileencoding=utf-8
+" scriptencoding utf-8
+" set fileformats=unix,mac,dos
 
 " Amire nincs szükségünk
 set noswapfile          " nincs swap fájl
 set nobackup            " nics backup
 set nowritebackup
+
+
+"-------------------------------------------------------------------------------------------------
+" LEADERKEY BEÁLLÍTÁSA
+"-------------------------------------------------------------------------------------------------
+
+let g:mapleader = '-'
+let g:maploccalleader = ','
+
 
 
 "--------------------------------------------------------------------------------------------------
@@ -38,13 +46,13 @@ set nowritebackup
 " Ablak, illetve puffer használattal kapcsolatos beállítások
 set signcolumn=yes          " jelző oszlop állandóan legyen látható
 
-" ablakfelosztás szabályozása
+" Ablakfelosztás szabályozása
 set splitbelow
 set splitright
 
 set showcmd                 " leader key használatát kíjelzi
 
-set timeout timeoutlen=500
+set timeout timeoutlen=500  " billentyűlenyomások közötti várakozás
 
 " Automatically hide buffer with unsaved changes without showing warning
 set hidden
@@ -98,10 +106,6 @@ nnoremap <silent> <M-up> <C-w>k
 "--------------------------------------------------------------------------------------------------
 " SZERKESZTÉSSEL KAPCSOLATOS BEÁLLÍTÁSOK:
 "--------------------------------------------------------------------------------------------------
-
-" LEADERKEY BEÁLLÍTÁSA
-let g:mapleader = '-'
-let g:maploccalleader = ','
 
 " MOZGÁSSAL KAPCSOLTOS DOLGOK:
 " Az alábbiakat csak akkor használjuk ha nem akarjuk a kurzor gombokat használni!
