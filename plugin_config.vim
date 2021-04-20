@@ -135,11 +135,8 @@ let g:webdevicons_enable_nerdtree = 1
 
 " Fájlkezelő megnyítása
 " A linuxos Acer gépem így értelmezi a S-F2 lenyomást
-if g:os_linux
-    map <F14> :NERDTreeToggle <CR>
-else    " egyébként
-    map <S-F2> :NERDTreeToggle <CR>
-endif
+map <F14> :NERDTreeToggle <CR>
+map <S-F2> :NERDTreeToggle <CR>
 
 
 "---------------------------------------------------------------------------------------------------
