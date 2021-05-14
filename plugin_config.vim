@@ -801,4 +801,3 @@ nmap <leader>nu :call ToggleNumber() <CR>    " Sorszámozási mód váltás
 " nnoremap <silent> <leader>cn :cnext<CR>
 " noremap <silent> <leader>cp :cprev<CR>
 
-
