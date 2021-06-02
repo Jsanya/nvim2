@@ -39,7 +39,6 @@ let g:mapleader = '-'
 let g:maploccalleader = ','
 
 
-
 "--------------------------------------------------------------------------------------------------
 " ABLAKOK, PUFFEREK ÉS TABOK (Fülek) HASZNÁLATÁVAL KAPCSOLATOS BEÁLLÍTÁSOK:
 "--------------------------------------------------------------------------------------------------
@@ -58,29 +57,18 @@ set timeout timeoutlen=500  " billentyűlenyomások közötti várakozás
 set hidden
 
 " Új függőleges felosztás nyítása, és a fokusz odahelyzése
-nnoremap <leader>nv <C-w>v<C-w>l
+nnoremap <leader>nv :vsplit<CR>
 nnoremap <leader>nfv :vnew<CR>
 " Új viszintes felosztás nyítása, és a fokusz odahelyzése
-nnoremap <leader>ns <C-w>v<C-w>j
+"nnoremap <leader>ns <C-w>v<C-w>j
+nnoremap <leader>ns :split<CR>
 
 " A vágólap használatához:
 set clipboard+=unnamedplus
 
-" Tabok (fülek) kezelése
-" Gyors váltás a tabok között
-" noremap <leader>1 1gt
-" noremap <leader>2 2gt
-" noremap <leader>3 3gt
-" noremap <leader>4 4gt
-" noremap <leader>5 5gt
-" noremap <leader>6 6gt
-" noremap <leader>7 7gt
-" noremap <leader>8 8gt
-" noremap <leader>9 9gt
-" noremap <leader>0 :tablast<cr>
 " Tabok közötti jobbra-balra lépkedés
 nnoremap ó :tabnext<CR>
-nnoremap ü :tabprevious<CR>
+noremap ü :tabprevious<CR>
 " Új tab nyítása:
 nnoremap <leader>nt :tabnew<CR>
 
@@ -94,14 +82,13 @@ nnoremap <silent> <M-l> <C-w>>
 nnoremap <silent> <M-j> <C-W>-
 nnoremap <silent> <M-k> <C-W>+
 
-" Ablakok közötti gyor váltás
-nnoremap <silent> <M-left> <C-w>h
-nnoremap <silent> <M-right> <C-w>l
-nnoremap <silent> <M-down> <C-w>j
-nnoremap <silent> <M-up> <C-w>k
+" Ablakok közötti gyors váltás
+nnoremap <silent> <M-w><left> <C-w>h
+nnoremap <silent> <M-w><right> <C-w>l
+noremap <silent> <M-w><down> <C-w>j
+nnoremap <silent> <M-w><up> <C-w>k
 
-
-
+nnoremap <M-w> :call WinMode() <CR>
 
 "--------------------------------------------------------------------------------------------------
 " SZERKESZTÉSSEL KAPCSOLATOS BEÁLLÍTÁSOK:

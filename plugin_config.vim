@@ -711,50 +711,73 @@ let g:translator_target_lang='hu'
 "---------------------------------------------------------------------------------------------------
 "
     " Sötét-világos háttérszin váltó függvény
-    function! ToggleBG()
-        let s:tbg = &background
-        " Invertálás
-        if s:tbg == "dark"
-            set background=light
-        else
-            set background=dark
-        endif
-    endfunction
+function! ToggleBG()
+    let s:tbg = &background
+    " Invertálás
+    if s:tbg == "dark"
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
 
 
     " Abszolút a relativ sorszámozás között vált
-    function! ToggleNumber()
-        if(&relativenumber == 1)
-            set norelativenumber
-            set number
-        else
-            set relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
+
+
+function WinMode()
+    let l:c = ""
+    echo "Winmode: s: split | v: vertical split | c: close | q: kilép "
+    while l:c != "\<Esc>"
+        let l:c = getchar()
+        echo c
+        if l:c == 115
+            wincmd  s
+            let l:c = "\<Esc>"
+        elseif l:c == "118"
+            wincmd v
+            let l:c = "\<Esc>"
+        elseif l:c == "99"
+            wincmd q
+            let l:c = "\<Esc>"
+        elseif l:c == "100"
+            wincmd q
+            let l:c = "\<Esc>"
+        elseif l:c == "\<left>"
+            wincmd h
+        elseif l:c == "\<right>"
+            wincmd l
+        elseif l:c == "\<up>"
+            wincmd k
+        elseif l:c == "\<down>"
+            wincmd j
         endif
-    endfunc
+    endwhile
+endfunction
 
 
+function Karkod()
+    let l:ch = ""
+    echo "Nyomj meg egy gombot! ESC - kilépés!"
+    while l:ch != "\<Esc>"
+        l:ch = getchar()
+        echo l:ch
+        if l:ch == "21"
+            echo "sikerült"
+            let l:ch = "\<Esc>"
+        endif
+    endwhile
+endfunction
 
-    function! WinMode()
-        let l:ch = ""
-        echo "Win üzemmód: S: split | V: vertical split | C: close | ESC: kilép "
-        while l:ch != "\<ESC>"
-            let l:ch = nr2char(getchar())
-            if l:ch == "s"
-                wincmd  s
-                let l:ch = "\<ESC>"
-            elseif l:ch == "v"
-                wincmd v
-                 let l:ch = "\<ESC>"
-            elseif l:ch == "c"
-                wincmd q
-                 let l:ch = "\<ESC>"
-            elseif l:ch == "q"
-                wincmd q
-                 let l:ch = "\<ESC>"
-            endif
-        endwhile
-        echo "  "
-    endfunction
 
 "---------------------------------------------------------------------------------------------------
 " ÚJ PARANCSOK:
@@ -800,4 +823,3 @@ nmap <leader>nu :call ToggleNumber() <CR>    " Sorszámozási mód váltás
 " nnoremap <RIGHT> :cnext<CR>
 " nnoremap <silent> <leader>cn :cnext<CR>
 " noremap <silent> <leader>cp :cprev<CR>
-

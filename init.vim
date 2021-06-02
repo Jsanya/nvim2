@@ -40,13 +40,14 @@ let g:perjel = g:os_win ? '\' : '/'
 let g:nvim_config_dir = stdpath('config')
 let g:nvim_plugin_dir = stdpath('data').'/plugged'
 
-" Konfig fájlok listája lefutási sorrendben.
+" Konfigurációs fájlok végrehajtása
+" Konfig fájlok listája sorrendben.
 let g:configfiles = [
     \ 'general.vim',
     \ 'plugin_list.vim',
     \ 'plugin_config.vim']
 
-" A konfig állományok meghívása a fenti sorrendben:
+" A konfig állományok futtatása a fenti sorrendben:
 for s:fnev in g:configfiles
     execute 'source ' . g:nvim_config_dir . '/' . s:fnev
 endfor

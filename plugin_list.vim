@@ -3,7 +3,6 @@
 call plug#begin(g:nvim_plugin_dir)
 
 " Fáljkezelő
-" Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'  " display git status within Nerdtree
@@ -33,10 +32,6 @@ Plug 'zefei/vim-wintabs'
 Plug 'mhinz/vim-startify'
 
 " Plug 'liuchengxu/vim-which-key'
-
-
-" Linting and Code Formatting
-" Plug 'w0rp/ale'
 
 " Státusz sor
 Plug 'itchyny/lightline.vim'
@@ -93,8 +88,8 @@ Plug 'mhinz/vim-signify'
 
 " Fuzzy Search
 " Plug '~/.fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Regiszterek használatát segíti
 Plug 'junegunn/vim-peekaboo'
@@ -103,6 +98,12 @@ Plug 'junegunn/vim-peekaboo'
 if os_linux
     Plug 'tpope/vim-eunuch'
 endif
+
+" Linting and Code Formatting
+" Kódellenőrzés és formázás
+Plug 'dense-analysis/ale'
+
+
 
 " Szintaktika kiemelés, formázás sok-sok programnyelvhez
 Plug 'sheerun/vim-polyglot'
@@ -143,8 +144,6 @@ Plug 'voldikss/vim-translator'
 " A Bbye lehetővé teszi, hogy törölje a puffereket (zárja be a fájlokat) anélkül,
 " hogy bezárná az ablakokat, és nem tudná rendezni az elrendezését.
 Plug 'moll/vim-bbye'
-
-
 
 
 " C# (dotnet) fejlesztéshez
