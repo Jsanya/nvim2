@@ -7,6 +7,10 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'  " display git status within Nerdtree
 
+" Lebegőablakos terminál
+Plug 'voldikss/vim-floaterm'
+
+
 " Kommentelő
 Plug 'preservim/nerdcommenter'
 

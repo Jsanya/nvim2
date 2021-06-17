@@ -20,7 +20,7 @@ colorscheme gruvbox
 
 
 "---------------------------------------------------------------------------------------------------
-" STARTIFY:
+" STARTIFY: kezdőképernyő
 "---------------------------------------------------------------------------------------------------
 " let g:startify_custom_header = [
 "             \ '------------------------------------',
@@ -29,7 +29,7 @@ colorscheme gruvbox
 "             \]
 
 let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Fájlok']            },
+          \ { 'type': 'files',     'header': ['   Files']            },
           \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
@@ -71,7 +71,7 @@ let g:NERDTreeHidden=1
 
 
 " Initial NERDTree width - Az ablak alapszélessége
-let NERDTreeWinSize=30
+let NERDTreeWinSize=35
 
 " Auto delete buffer deleted with NerdTree
 " Automatikusan törli a törölt fájl pufferét
@@ -138,6 +138,14 @@ let g:webdevicons_enable_nerdtree = 1
 map <F14> :NERDTreeToggle <CR>
 map <S-F2> :NERDTreeToggle <CR>
 
+
+
+"---------------------------------------------------------------------------------------------------
+" VIM-FLOATERM plugin - Lebegőablakos terminál ablak
+"---------------------------------------------------------------------------------------------------
+ let g:floaterm_keymap_toggle = '<F9>'
+
+ tnoremap <ESC> <C-\><C-n>
 
 "---------------------------------------------------------------------------------------------------
 " WINTAB: pufferek, tabok
