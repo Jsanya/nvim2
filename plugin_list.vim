@@ -57,7 +57,7 @@ Plug 'szw/vim-maximizer'
 Plug 'matze/vim-move'
 
 " Aláhúzza a kurzor alatti szót a fájlban
-Plug 'itchyny/vim-cursorword'
+ug 'itchyny/vim-cursorword'
 
 " A puffer írása előtt létrehozz minden nem létező könyvtárat
 Plug 'pbrisbin/vim-mkdir'

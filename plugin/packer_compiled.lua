@@ -69,9 +69,17 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["awesome-vim-colorschemes"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/awesome-vim-colorschemes"
+  },
   ["completion-nvim"] = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   ["gruvbox-material"] = {
     loaded = true,
@@ -81,13 +89,45 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
+  nerdcommenter = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdcommenter"
+  },
+  nerdtree = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdtree"
+  },
+  ["nerdtree-git-plugin"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
+  },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
+  ["nvim-bufferline.lua"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -101,9 +141,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["vim-cursorword"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-cursorword"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-dispatch"] = {
     loaded = true,
@@ -112,6 +164,38 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-gruvbox8"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-gruvbox8"
+  },
+  ["vim-maximizer"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-maximizer"
+  },
+  ["vim-mkdir"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-mkdir"
+  },
+  ["vim-move"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-move"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
+  },
+  ["vim-signify"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-signify"
+  },
+  ["vim-startify"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-startify"
+  },
+  ["vim-translator"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-translator"
   }
 }
 

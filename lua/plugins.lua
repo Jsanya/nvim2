@@ -8,38 +8,97 @@ end
 --]]
 
 return require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- so packer can update itself
+    -- Csomagkezelő 
+    use {'wbthomason/packer.nvim'} -- so packer can update itself
+
+    -- Git verziókezelő 
+    use {'tpope/vim-fugitive'} -- Git commands in nvim
+    use {'tpope/vim-rhubarb'} -- Fugitive-companion to interact with github
+    -- Változások mutatása
+    use {'mhinz/vim-signify'}
+
   
-  use { -- nice interface for LSP functions (among other things)
+    -- Fájlkezelő
+    use {'preservim/nerdtree'}
+    use {'ryanoasis/vim-devicons'}
+    use {'Xuyuanp/nerdtree-git-plugin'}  -- display git status within Nerdtree
+
+    -- Státusz sor kezelő
+    use { 'hoob3rt/lualine.nvim',
+  	    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+
+    -- Pufferek kezelése
+    use {'akinsho/nvim-bufferline.lua', 
+        requires = 'kyazdani42/nvim-web-devicons'
+    }
+
+    -- Kezdőképernyő
+    use {'mhinz/vim-startify'}
+
+
+    -- Kommentelő
+    use {'preservim/nerdcommenter'}
+
+    -- use 'ludovicchabant/vim-gutentags}' -- Automatic tags management
+
+  
+    use { -- nice interface for LSP functions (among other things)
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'},{'nvim-lua/plenary.nvim'}}
-  }
+    requires = {{'nvim-lua/popup.nvim'},
+                {'nvim-lua/plenary.nvim'}}
+    }
 
-  -- Color scheme
-  use { 'sainnhe/gruvbox-material' }
+    -- Treesitter
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+    -- Zárojelek automatikus párosítása
+    use {'windwp/nvim-autopairs'}
+
+    -- Kódformázás
+    use {'sbdchd/neoformat'}
+
+    -- Maximálja illetve visszaállítja az aktuális ablak méretét
+    use {'szw/vim-maximizer'}
+
+    -- Egy vagy több sort mozgat függölegesen
+    use {'matze/vim-move'}
+
+    -- Aláhúzza a kurzor alatti szót a fájlban
+    use {'itchyny/vim-cursorword'}
+
+    -- A puffer írása előtt létrehozz minden nem létező könyvtárat
+    use {'pbrisbin/vim-mkdir'}
 
 
-  use { 'hoob3rt/lualine.nvim',
-  	requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
 
 
+    -- Color scheme
+    use { 'sainnhe/gruvbox-material' }
 
-  use 'neovim/nvim-lspconfig' -- native LSP support
-  use { 'nvim-lua/completion-nvim' }
+    use {'rafi/awesome-vim-colorschemes'}
+    use {'morhetz/gruvbox'}
+    use {'lifepillar/vim-gruvbox8'}
 
-  -- use 'hrsh7th/nvim-cmp' -- autocompletion framework
-  -- use 'hrsh7th/cmp-nvim-lsp' -- LSP autocompletion provider
+    -- Szinkódokat szinesben jeleniti meg
+    use {'norcalli/nvim-colorizer.lua'}
+
+
+    use 'neovim/nvim-lspconfig' -- native LSP support
+    use { 'nvim-lua/completion-nvim' }
+
+    -- use 'hrsh7th/nvim-cmp' -- autocompletion framework
+    -- use 'hrsh7th/cmp-nvim-lsp' -- LSP autocompletion provider
   
-  -- Lua development
-  use { 'tjdevries/nlua.nvim' }
+    -- Lua development
+    use { 'tjdevries/nlua.nvim' }
 
 
-  -- Vim dispatch
-  use { 'tpope/vim-dispatch' }
+    -- Vim dispatch
+    use { 'tpope/vim-dispatch' }
 
-  -- Fugitive for Git
-  use { 'tpope/vim-fugitive' }
+    -- Fordító program
+    use {'voldikss/vim-translator'}
 
 
 end)
