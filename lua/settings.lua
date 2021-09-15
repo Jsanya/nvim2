@@ -1,41 +1,50 @@
-local utils = require('utils')
+--local utils = require('utils')
 
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
-local o = vim.o
+local o = vim.o         -- úgy viselkedik min a :set xx
 local indent = 4
 
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 
+-- Map leader key beállítása
+vim.g.mapleader = '-'
+vim.g.maplocalleader = ','
 
-o.tabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
+-- Behúzás 
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.shiftround = true
+opt.smartindent = true
+opt.expandtab = true
+
+opt.timeout = true
+opt.timeoutlen=500
+
+
+opt.scrolloff = 4
 
 opt.undofile = true
 opt.ruler = false
+
 opt.hidden = true
 opt.ignorecase = true
+
+-- Ablakfelosztás íránya
 opt.splitbelow = true
 opt.splitright = true
-o.completeopt = "menuone,noselect"
 
-vim.opt.termguicolors = true
+
+opt.completeopt = "menuone,noselect"
+
+
+
+opt.termguicolors = true
 
 --[[
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'smartindent', true)
-utils.opt('b', 'tabstop', indent)
-utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'scrolloff', 4 )
-utils.opt('o', 'shiftround', true)
 utils.opt('o', 'smartcase', true)
-utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
 utils.opt('o', 'wildmode', 'list:longest')
 utils.opt('w', 'number', true)
 utils.opt('w', 'relativenumber', true)
@@ -44,6 +53,6 @@ utils.opt('o', 'clipboard','unnamed,unnamedplus')
 
 
 require('lualine').setup()
-require("bufferline").setup{}
+require("bufferline").setup()
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
