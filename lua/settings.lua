@@ -1,58 +1,81 @@
 --local utils = require('utils')
 
-local cmd = vim.cmd
-local opt = vim.opt
+-- Álnevek a könnyebb használathoz
+local vimcmd = vim.cmd     -- VimL utasítások végrehajtása
+local set = vim.opt         -- Beállitások
 local g = vim.g
-local o = vim.o         -- úgy viselkedik min a :set xx
-local indent = 4
 
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
 
--- Map leader key beállítása
+
+vimcmd 'syntax enable'
+vimcmd 'filetype plugin indent on'
+
+-- Map vezető key beállítása
 vim.g.mapleader = '-'
 vim.g.maplocalleader = ','
 
--- Behúzás 
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.shiftround = true
-opt.smartindent = true
-opt.expandtab = true
+-- Sorok formázása
+-- Behúzás, tabulátor 
+set.tabstop = 4             -- tab mérete 
+set.softtabstop = 4         
+set.shiftwidth = 4          -- eltoláskor a behúzás mérete
+set.shiftround = true       -- sorok eltolásakor kerekitse a shiftwidth legközelebbi többszörösére
+set.smartindent = true      -- okos bebúzás
+set.expandtab = true        -- tabulátorok szóközzéké alakítása
 
-opt.timeout = true
-opt.timeoutlen=500
+
+set.wrap = true
+set.textwidth = 99          -- sor széllessége
+set.signcolumn = 'yes'
+
+set.timeout = true
+set.timeoutlen=1000
 
 
-opt.scrolloff = 4
+set.scrolloff = 4
 
-opt.undofile = true
-opt.ruler = false
+set.undofile = true
+set.ruler = false
 
-opt.hidden = true
-opt.ignorecase = true
+set.hidden = true
 
 -- Ablakfelosztás íránya
-opt.splitbelow = true
-opt.splitright = true
-
-
-opt.completeopt = "menuone,noselect"
+set.splitbelow = true
+set.splitright = true
 
 
 
-opt.termguicolors = true
+set.completeopt = "menuone,noselect"
 
---[[
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'wildmode', 'list:longest')
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', true)
-utils.opt('o', 'clipboard','unnamed,unnamedplus')
---]]
+set.listchars = { eol = "↴" }
+
+set.termguicolors = true
+
+-- Keresési beállítások
+set.incsearch = true    -- Részleges egyezéseket megjelenítő növekményes keresés.
+set.ignorecase = true   -- kis, nagybetűk figyelmen kívűl hagyása
+set.smartcase = true    -- A keresés automatikus váltása ki- és nagybetűkre, ha a keresés lekérdezés nagybetűket tartalmaz
+set.hlsearch = true     -- a keresés kiemelésének engedélyezése 
+set.showmatch = true    -- találat számainak megjelenítése
+
+
+-- Sorszámozás kezelése, automatizálása
+set.number = true
+
+vimcmd([[
+    augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    augroup END
+]])
+
+
+
 
 
 require('lualine').setup()
 require("bufferline").setup()
+
 -- Highlight on yank
-vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+vimcmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'

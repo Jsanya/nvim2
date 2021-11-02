@@ -39,6 +39,8 @@ Plug 'mhinz/vim-startify'
 
 " Státusz sor
 Plug 'itchyny/lightline.vim'
+hlsearch
+
 
 " Sorbehúzás jelőlése
 Plug 'Yggdroot/indentLine'

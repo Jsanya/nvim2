@@ -185,7 +185,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " SORSZÁMOZÁS
 set number                  " Sorszámozás megjelenítése
-" Sorszámozás autómatikus be, illetve kikapcsolása:
+" Sorszámozás autmatikus be, illetve kikapcsolása:
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber

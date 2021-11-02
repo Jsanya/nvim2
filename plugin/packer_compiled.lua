@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/juhasz/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/juhasz/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/juhasz/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/juhasz/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/juhasz/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/sanyi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/sanyi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/sanyi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/sanyi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/sanyi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,131 +71,179 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["awesome-vim-colorschemes"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/awesome-vim-colorschemes"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/awesome-vim-colorschemes"
   },
-  ["completion-nvim"] = {
+  ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/completion-nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/cmp-path"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/glow.nvim"
   },
   gruvbox = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/gruvbox"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   ["gruvbox-material"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/gruvbox-material"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/lualine.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   neoformat = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/neoformat"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/neoformat"
   },
   nerdcommenter = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdcommenter"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nerdcommenter"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdtree"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nerdtree"
   },
   ["nerdtree-git-plugin"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
   },
   ["nlua.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nlua.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-bufferline.lua"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
+  ["nvim-peekup"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-peekup"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/toggleterm.nvim"
   },
   ["vim-cursorword"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-cursorword"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-cursorword"
   },
   ["vim-devicons"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-devicons"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-dispatch"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-dispatch"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-dispatch"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-gruvbox8"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-gruvbox8"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-gruvbox8"
   },
   ["vim-maximizer"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-maximizer"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-maximizer"
   },
   ["vim-mkdir"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-mkdir"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-mkdir"
   },
   ["vim-move"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-move"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-move"
   },
   ["vim-rhubarb"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
-  },
-  ["vim-signify"] = {
-    loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-signify"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-rhubarb"
   },
   ["vim-startify"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-startify"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-startify"
   },
   ["vim-translator"] = {
     loaded = true,
-    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/vim-translator"
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vim-translator"
+  },
+  vimwiki = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/vimwiki"
   }
 }
 
