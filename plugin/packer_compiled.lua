@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["AutoSave.nvim"] = {
+    loaded = true,
+    path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/AutoSave.nvim"
+  },
   ["awesome-vim-colorschemes"] = {
     loaded = true,
     path = "/home/sanyi/.local/share/nvim/site/pack/packer/start/awesome-vim-colorschemes"

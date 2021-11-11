@@ -1,5 +1,6 @@
 require('config.colorscheme')
 require('config.autopairs')
+require('config.autosave')
 --require('config.completion')
 require('config.fugitive')
 require('config.ident_blankline')
