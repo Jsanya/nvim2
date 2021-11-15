@@ -4,12 +4,26 @@
 local cmp = require'cmp'
 
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      require 'snippy'.expand_snippet(args.body)
+    end
+  },
+
+
+
+
+--[[
+cmp.setup {
    snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
       end,
     },
-   --[[formatting = {
+--]]
+
+
+    --[[formatting = {
       format = function(entry, vim_item)
          -- load lspkind icons
          --vim_item.kind = string.format(
@@ -30,6 +44,10 @@ cmp.setup {
     mapping = {
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
@@ -37,7 +55,8 @@ cmp.setup {
     },
     sources = {
         { name = 'nvim_lsp' },
-        { name = "luasnip" },
+       -- { name = "luasnip" },
+        { name = "snippy" },
         { name = "buffer" },
         { name = "nvim_lua" },
     }      

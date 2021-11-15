@@ -53,11 +53,12 @@ return require('packer').startup(function()
 
 
     -- Kommentelő
-    use 'preservim/nerdcommenter'
+    -- use 'preservim/nerdcommenter'
+    use 'b3nj5m1n/kommentary'
 
     -- use 'ludovicchabant/vim-gutentags}' -- Automatic tags management
 
-  
+
     use { -- nice interface for LSP functions (among other things)
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'},
@@ -78,6 +79,14 @@ return require('packer').startup(function()
         },
     }
 
+    -- Kódtöredékek (snippet) használata
+
+    use 'dcampos/nvim-snippy'
+
+    use 'honza/vim-snippets'
+    use 'dcampos/cmp-snippy'
+
+    use 'simrat39/symbols-outline.nvim'
 
     -- Zárojelek automatikus párosítása
     use 'windwp/nvim-autopairs'

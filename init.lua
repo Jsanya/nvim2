@@ -18,9 +18,9 @@ vim.api.nvim_exec (
     	false
     )
 
--- Sensible defaults
--- Érzékenyebb alapbeállítások
-require('settings')
+    -- Sensible defaults
+    -- Érzékenyebb alapbeállítások
+    require('settings')
 
 -- Install plugins
 -- Pluginok installálása

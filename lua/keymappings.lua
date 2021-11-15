@@ -9,7 +9,7 @@ end
 
 local cmd = vim.cmd 
 
-
+-- Ugyanaz mint ha ESC -t nyomnánk insert módban
 map('i', 'jk', '<Esc>')           -- jk to escape
 
 
@@ -24,7 +24,7 @@ map('n', 'ő', ':bp<CR>')    -- előző puffer
 map('n', 'ú', ':bn<CR>')    -- következő puffer
 
 -- Tabok kezelése (ciklikus)
-map('n', 'ü', ':tabprevios<CR>') -- előző puffer
+map('n', 'ü', ':tabprevious<CR>') -- előző puffer
 map('n', 'ó', ':tabnext<CR>')    -- következő puffer
 map('n', 'nt', ':tabnew<CR>')    -- következő puffer
 

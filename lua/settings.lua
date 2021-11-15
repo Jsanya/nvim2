@@ -43,7 +43,7 @@ set.hidden = true
 set.splitbelow = true
 set.splitright = true
 
-
+-- vim.cmd 'set guifont=DroidSansMono\\ Nerd\\ Font:18'
 
 set.completeopt = "menuone,noselect"
 
