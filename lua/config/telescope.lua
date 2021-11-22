@@ -10,15 +10,14 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 --]]
---
---
 
 
 local keymap = vim.api.nvim_set_keymap
 local opt1 = {noremap = true}
 local opt2 = {noremap = true, silent = true}
 
-keymap('n', '<leader>ft', '<cmd>Telescope<CR>', opt1)
+keymap('n', '<leader>ft', '<cmd>Telescope<CR>', opt1)                   -- Telescope indítása
+keymap('n', '<F4>', '<cmd>Telescope<CR>', opt1)                         -- Telesciope indítása
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>', opt1)
 keymap('n', '<leader>fb', '<cmd>Telescope file_browser<CR>', opt1)
 keymap('n', '<leader>fp', '<cmd>Telescope buffers<CR>', opt1)

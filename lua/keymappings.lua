@@ -76,6 +76,6 @@ map('x', '>', '>gv')
 -- Kereséssel kapcsolatos dolgok
 map('n', '/', [[/\v]])
 map('v', '/', [[/\v]])
-map('n', '<leader><space>', ':nohlsearch<CR>')
-
+-- map('n', '<leader><space>', ':nohlsearch<CR>')
+map('n', '<leader>/', ':nohlsearch<CR>')
 
