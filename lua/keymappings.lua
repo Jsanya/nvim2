@@ -20,13 +20,13 @@ map('n', '<leader>nvf', ':vnew<CR>')    -- ua. + új fájl
 map('n', '<leader>ns', ':split<CR>')    -- új vizszintes felosztás
 
 -- Puffer kezelés (ciklikus)
-map('n', 'ő', ':bp<CR>')    -- előző puffer
-map('n', 'ú', ':bn<CR>')    -- következő puffer
+map('n', '<TAB>', ':bn<CR>')        -- következő puffer
+map('n', '<S-TAB>', ':bp<CR>')      -- előző puffer
 
 -- Tabok kezelése (ciklikus)
-map('n', 'ü', ':tabprevious<CR>') -- előző puffer
-map('n', 'ó', ':tabnext<CR>')    -- következő puffer
-map('n', 'nt', ':tabnew<CR>')    -- következő puffer
+map('n', 'ü', ':tabprevious<CR>')   -- előző puffer
+map('n', 'ó', ':tabnext<CR>')       -- következő puffer
+map('n', 'nt', ':tabnew<CR>')       -- következő puffer
 
 
 --Ablak átméretezés

@@ -15,7 +15,7 @@ vim.api.nvim_exec (
         autocmd BufWritePost *.lua PackerCompile
     augroup end
     ]],
-    	false
+    false
     )
 
     -- Sensible defaults
@@ -29,13 +29,13 @@ require('plugins')
 -- Key mappings
 require('keymappings')
 
--- Setup Lua language server using submodule
--- Nyelviszerverek beállításai
-require('lsp_lua')
-
 -- Another option is to groups configuration in one folder
 -- a config könyvtárban található init.lua futtatása, ami további config fájlokat hajt végre
 -- itt vannak elhelyezve az egyes pluginok configurációja
 require('config')
+
+-- Setup Lua language server using submodule
+-- Nyelviszerverek beállításai
+require('lsp_lua')
 
 

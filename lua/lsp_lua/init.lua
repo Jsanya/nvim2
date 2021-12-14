@@ -1,3 +1,6 @@
+require ('lsp_lua.lsp-installer')
+
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -47,25 +50,6 @@ local function make_config()
   }
 end
 
--- lsp-install
-local function setup_servers()
-  require'lspinstall'.setup()
 
-  local servers = require'lspinstall'.installed_servers()
 
-  for _, server in pairs(servers) do
-    local config = make_config()
-    require'lspconfig'[server].setup(config)
-  end
-end
-
-setup_servers()
-
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
-vim.lsp.set_log_level("debug")
-
-require('lsp_lua.omnisharp')
+--require('lsp_lua.omnisharp')

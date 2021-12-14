@@ -23,7 +23,7 @@ require("indent_blankline").setup {
         "IndentBlanklineIndent5",
         "IndentBlanklineIndent6",
     },
-    filetype_exclude = {"terminal", "startify"},
+    filetype_exclude = {"terminal", "startify", "nerdtree"},
 }
 
 

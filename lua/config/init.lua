@@ -6,6 +6,7 @@ require('config.fugitive')
 require('config.ident_blankline')
 require('config.lualine')  --kkk
 require('config.gitsigns')
+require('config.marks')
 require('config.maximizer')
 -- require('config.nerdcommenter')
 require('config.nerdtree')

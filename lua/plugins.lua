@@ -1,12 +1,3 @@
--- Install packer
---[[ local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git:', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd 'packadd packer.nvim'
-end
---]]
-
 return require('packer').startup(function()
     -- Csomagkezelő 
     use 'wbthomason/packer.nvim' -- so packer can update itself
@@ -22,6 +13,12 @@ return require('packer').startup(function()
         requires = {'nvim-lua/plenary.nvim'},
         -- tag = 'release' -- To use the latest release
     }
+
+    
+    -- Könyvjelzők használata
+    use 'chentau/marks.nvim'
+    
+
 
     -- Terminál okosító
     use "akinsho/toggleterm.nvim"
@@ -51,7 +48,15 @@ return require('packer').startup(function()
     -- Kezdőképernyő
     use 'mhinz/vim-startify'
 
-
+    --[[
+    use {'goolord/alpha-nvim',
+        requires = 'kyazdani42/nvim-web-devicons' ,
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+       end
+    }
+    --]] 
+    --
     -- Kommentelő
     -- use 'preservim/nerdcommenter'
     use 'b3nj5m1n/kommentary'
@@ -70,21 +75,28 @@ return require('packer').startup(function()
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
+    -- Nyelvi szerver (LSP) támogatás 
+    use 'neovim/nvim-lspconfig' -- native LSP support
+    use 'williamboman/nvim-lsp-installer'
+
+    --use 'kabouzeid/nvim-lspinstall'
+
+    -- Lua development
     use { 'hrsh7th/nvim-cmp',
-        requires = {
+       requires = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-cmdline',
         },
     }
 
     -- Kódtöredékek (snippet) használata
-
     use 'dcampos/nvim-snippy'
+    use 'dcampos/cmp-snippy'
 
     use 'honza/vim-snippets'
-    use 'dcampos/cmp-snippy'
 
     use 'simrat39/symbols-outline.nvim'
 
@@ -119,11 +131,6 @@ return require('packer').startup(function()
     -- Szinkódokat a programkódban szinesben jeleniti meg
     use 'norcalli/nvim-colorizer.lua'
 
-    -- Nyelvi szerver (LSP) támogatás 
-    use 'neovim/nvim-lspconfig' -- native LSP support
-    use 'kabouzeid/nvim-lspinstall'
-  
-    -- Lua development
     use 'tjdevries/nlua.nvim' 
 
 
