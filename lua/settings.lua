@@ -84,6 +84,7 @@ vimcmd([[
 
 
 require('lualine').setup()
+--
 require("bufferline").setup()
 
 -- Puffer megnyitásakor a kurzor az utoljára használt pozicióba áll

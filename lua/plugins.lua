@@ -16,7 +16,8 @@ return require('packer').startup(function()
 
     
     -- Könyvjelzők használata
-    use 'chentau/marks.nvim'
+    use 'chentoast/marks.nvim'
+   
     
 
 
@@ -42,7 +43,7 @@ return require('packer').startup(function()
     }
     
     -- Automatikus mentés
-    use "Pocco81/AutoSave.nvim"
+    use "Pocco81/auto-save.nvim"
 
 
     -- Kezdőképernyő
@@ -72,6 +73,10 @@ return require('packer').startup(function()
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- Treesitter
+    -- Csak installáláskor:
+    -- use { 'nvim-treesitter/nvim-treesitter',
+    --    run = function() require('nvim-treesitter.install').update({ with_sync = true })        end,
+    --}
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
