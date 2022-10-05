@@ -4,7 +4,7 @@
 local vimcmd = vim.cmd     -- VimL utasítások végrehajtása
 local set = vim.opt         -- Beállitások
 local g = vim.g
-
+local api = vim.api
 
 
 vimcmd 'syntax enable'
@@ -93,12 +93,21 @@ vim.cmd [[
 ]]
 
 -- automata kilépés az insert módból 
-vim.cmd [[
+--[[vim.cmd [[
   augroup AutoExitInsertMode
     autocmd!
     autocmd CursorHoldI * stopinsert
   augroup end
   ]]
-
+--]]
 -- Highlight on yank
-vimcmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+-- vimcmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+
+api.nvim_create_autocmd('TextYankPost', {
+    group = textyank,
+    callback = function()
+        vim.highlight.on_yank({ higroup = 'Visual', timeout = 1000})
+    end,
+})
+
+

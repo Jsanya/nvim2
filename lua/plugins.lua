@@ -22,7 +22,10 @@ return require('packer').startup(function()
 
 
     -- Terminál okosító
-    use "akinsho/toggleterm.nvim"
+    -- use "akinsho/toggleterm.nvim"
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
 
     -- Fájlkezelő
     use 'preservim/nerdtree'

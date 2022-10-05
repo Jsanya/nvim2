@@ -10,7 +10,7 @@ end
 local cmd = vim.cmd 
 
 -- Ugyanaz mint ha ESC -t nyomnánk insert módban
-map('i', 'jk', '<Esc>')           -- jk to escape
+-- map('i', 'jk', '<Esc>')           -- jk to escape
 
 
 
@@ -48,8 +48,9 @@ map('', '<F1>', '<ESC')
 map('t', '<ESC>', [[<C-\><C-n>]])
 map('n', '<C-t>', ':ToggleTerm<CR>')
 
--- Az aktuális fájl mentése
-map('n', '<C-s>', ':w<CR>')
+-- Fájl(ok) mentése
+map('n', '<C-s>', ':w<CR>')         -- aktuális puffer mentése
+-- map('n', '<C-S>', ':wall<CR>')      -- minden puffer mentése
 map('i', '<C-s>', '<ESC>:w<CR>i')
 
 -- Aktuális munkafolyamat ablakainak és puffereinek mentése
