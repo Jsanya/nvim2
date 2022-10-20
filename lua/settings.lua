@@ -49,7 +49,7 @@ set.ruler = false
 
 set.hidden = true
 
--- Ablakfelosztás íránya
+-- Ablakfelosztás iránya
 set.splitbelow = true
 set.splitright = true
 
@@ -81,8 +81,6 @@ vimcmd([[
     augroup END
 ]])
 
-
-
 require('lualine').setup()
 --
 require("bufferline").setup()
@@ -92,17 +90,9 @@ vim.cmd [[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 ]]
 
--- automata kilépés az insert módból 
---[[vim.cmd [[
-  augroup AutoExitInsertMode
-    autocmd!
-    autocmd CursorHoldI * stopinsert
-  augroup end
-  ]]
---]]
--- Highlight on yank
--- vimcmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
+-- Highlight on yank
+-- Másolandó szöveg kiemelése 1 mp-ig
 api.nvim_create_autocmd('TextYankPost', {
     group = textyank,
     callback = function()

@@ -17,9 +17,6 @@ return require('packer').startup(function()
     
     -- Könyvjelzők használata
     use 'chentoast/marks.nvim'
-   
-    
-
 
     -- Terminál okosító
     -- use "akinsho/toggleterm.nvim"
@@ -28,9 +25,17 @@ return require('packer').startup(function()
     end}
 
     -- Fájlkezelő
-    use 'preservim/nerdtree'
-    use 'ryanoasis/vim-devicons'
-    use 'Xuyuanp/nerdtree-git-plugin'  -- display git status within Nerdtree
+    -- use 'preservim/nerdtree'
+    -- use 'ryanoasis/vim-devicons'
+    -- use 'Xuyuanp/nerdtree-git-plugin'  -- display git status within Nerdtree
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
 
     -- Státusz sor kezelő
     use { 'hoob3rt/lualine.nvim',
@@ -50,16 +55,17 @@ return require('packer').startup(function()
 
 
     -- Kezdőképernyő
-    use 'mhinz/vim-startify'
-
-    --[[
-    use {'goolord/alpha-nvim',
-        requires = 'kyazdani42/nvim-web-devicons' ,
+    -- use 'mhinz/vim-startify'
+    -- use 'nvim-tree/nvim-web-devicons'
+    use {
+        'goolord/alpha-nvim',
+        --requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = {'nvim-tree/nvim-web-devicons'},
         config = function ()
-            require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-       end
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
     }
-    --]] 
+   
     --
     -- Kommentelő
     -- use 'preservim/nerdcommenter'
