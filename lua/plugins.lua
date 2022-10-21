@@ -55,8 +55,7 @@ return require('packer').startup(function()
 
 
     -- Kezdőképernyő
-    -- use 'mhinz/vim-startify'
-    -- use 'nvim-tree/nvim-web-devicons'
+    -- Startify szerű
     use {
         'goolord/alpha-nvim',
         --requires = { 'kyazdani42/nvim-web-devicons' },
