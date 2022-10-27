@@ -64,7 +64,18 @@ return require('packer').startup(function()
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
     }
-   
+  
+
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+        end
+    }
     --
     -- Kommentelő
     -- use 'preservim/nerdcommenter'
@@ -160,39 +171,9 @@ return require('packer').startup(function()
     use 'ellisonleao/glow.nvim'
 
     -- Regiszterek kényelmes megtekintése, használata
-    use 'gennaro-tedesco/nvim-peekup'
+    -- use 'gennaro-tedesco/nvim-peekup'
     
 end)
 
 
 
-
---[[
--- autocomplete config
-local cmp = require 'cmp'
-cmp.setup {
-  mapping = {
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    })
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-  }
-}
---]]
-
---[[
-
--- omnisharp lsp config
-require'lspconfig'.omnisharp.setup {
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  end,
-  cmd = { "Omnisharp/bin/omnisharp/run", "--languageserver" , "--hostPID", tostring(pid) },
-} 
---]]
