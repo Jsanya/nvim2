@@ -24,11 +24,7 @@ return require('packer').startup(function()
         require("toggleterm").setup()
     end}
 
-    -- Fájlkezelő
-    -- use 'preservim/nerdtree'
-    -- use 'ryanoasis/vim-devicons'
-    -- use 'Xuyuanp/nerdtree-git-plugin'  -- display git status within Nerdtree
-
+    -- Fájl kezelő
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -105,7 +101,7 @@ return require('packer').startup(function()
 
     --use 'kabouzeid/nvim-lspinstall'
 
-    -- Lua development
+    -- Befejezés 
     use { 'hrsh7th/nvim-cmp',
        requires = {
             'hrsh7th/cmp-buffer',
@@ -123,6 +119,7 @@ return require('packer').startup(function()
     use 'honza/vim-snippets'
 
     use 'simrat39/symbols-outline.nvim'
+
 
     -- Zárojelek automatikus párosítása
     use 'windwp/nvim-autopairs'
