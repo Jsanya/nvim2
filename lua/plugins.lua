@@ -82,8 +82,8 @@ return require('packer').startup(function()
 
     use { -- nice interface for LSP functions (among other things)
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'},
-                {'nvim-lua/plenary.nvim'}}
+        requires = {{'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'}}
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
