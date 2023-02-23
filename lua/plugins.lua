@@ -45,7 +45,9 @@ return require('packer').startup(function()
     use {'akinsho/nvim-bufferline.lua', 
         requires = 'kyazdani42/nvim-web-devicons'
     }
-    
+
+    use "m4xshen/smartcolumn.nvim"
+
     -- Automatikus mentés
     use "Pocco81/auto-save.nvim"
 
