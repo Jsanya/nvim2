@@ -46,7 +46,7 @@ return require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    -- use "m4xshen/smartcolumn.nvim"
+    -- Sorvégét jelző oszlop használata
     use 'Bekaboo/deadcolumn.nvim'
 
     -- Automatikus mentés
@@ -60,8 +60,8 @@ return require('packer').startup(function()
         --requires = { 'kyazdani42/nvim-web-devicons' },
         requires = {'nvim-tree/nvim-web-devicons'},
         config = function ()
-        require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
     }
   
 
@@ -75,6 +75,21 @@ return require('packer').startup(function()
         }
         end
     }
+
+    -- Teendők, megjegyzések áttekintése 
+    -- TODO, HACK, WARN, PERF, NOTE, TEST stb. 
+    use {
+        'folke/todo-comments.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+        --config = function()
+          --  require("todo-comments").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        --    }
+        --end
+    }
+
     --
     -- Kommentelő
     -- use 'preservim/nerdcommenter'
