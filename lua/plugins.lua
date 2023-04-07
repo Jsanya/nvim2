@@ -46,7 +46,8 @@ return require('packer').startup(function()
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    use "m4xshen/smartcolumn.nvim"
+    -- use "m4xshen/smartcolumn.nvim"
+    use 'Bekaboo/deadcolumn.nvim'
 
     -- Automatikus mentés
     use "Pocco81/auto-save.nvim"
@@ -92,7 +93,8 @@ return require('packer').startup(function()
     -- Treesitter
     -- Csak installáláskor:
     -- use { 'nvim-treesitter/nvim-treesitter',
-    --    run = function() require('nvim-treesitter.install').update({ with_sync = true })        end,
+    --    run = function() require('nvim-treesitter.install').update(
+    --    { with_sync = true }) end,
     --}
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'

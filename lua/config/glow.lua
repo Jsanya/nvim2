@@ -1,3 +1,5 @@
+require("glow").setup()
+
 -- glow konfig
 
 local keymap = vim.api.nvim_set_keymap

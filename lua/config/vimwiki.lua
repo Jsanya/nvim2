@@ -3,7 +3,7 @@
 -- A programozáshoz
 local wiki_prog = {
     name = 'Programozás',
-    path = '/home/sanyi/vimwiki/programozas/',
+    path = '~/vimwiki/programozas/',
     syntax = 'markdown',
     ext = '.md'
 }
@@ -11,11 +11,17 @@ local wiki_prog = {
 -- Egyéb dolgokhoz
 local wiki_egyeb = {
         name = 'Egyebek',
-        path = '/home/sanyi/vimwiki/egyebek/',
+        path = '~/vimwiki/egyebek/',
         syntax = 'markdown',
         ext = '.md'
 }
 
 vim.g.vimwiki_list = { wiki_prog, wiki_egyeb }
+vim.g.vimwiki_ext2syntax = {
+    ['.md'] = 'markdown',
+    ['.markdown'] = 'markdown',
+    ['.mdown'] = 'markdown'}
 
+-- a vimwiki működését  a felsorolt útvonalra korlátozza
+vim.g.vimwiki_global_ext = 0
 

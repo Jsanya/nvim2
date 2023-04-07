@@ -28,10 +28,10 @@ set.expandtab = true        -- tabulátorok szóközzéké alakítása
 
 
 set.backspace = {"indent", "eol", "start"}
-set.textwidth = 99          -- sor széllessége
-set.signcolumn = "yes:1"    -- jelölő oszlop bekapcs
+set.textwidth = 80          -- sor széllessége
+-- set.signcolumn = "yes:1"    -- jelölő oszlop bekapcs
 
-
+set.colorcolumn = "80"
 
 -- Kurzor
 set.cursorline = true

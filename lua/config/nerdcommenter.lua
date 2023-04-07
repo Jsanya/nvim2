@@ -44,10 +44,10 @@ Alapértelmezett keymap beállítások
 
 
     [count]|<Leader>|cn |NERDCommenterNested|
-    Same as |<Leader>|cc but forces nesting.
+    C
 
 
-    [count]|<Leader>|c<space> |NERDCommenterToggle|
+[count]|<Leader>|c<space> |NERDCommenterToggle|
     Toggles the comment state of the selected line(s). If the topmost selected
     line is commented, all selected lines are uncommented and vice versa.
 
