@@ -91,10 +91,8 @@ return require('packer').startup(function()
     }
 
     --
-    -- Kommentelő
-    -- use 'preservim/nerdcommenter'
-     --- use 'b3nj5m1n/kommentary'
-use {
+    -- Sorok kommentelése
+     use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
@@ -198,8 +196,14 @@ use {
     use 'ellisonleao/glow.nvim'
 
     -- Regiszterek kényelmes megtekintése, használata
-    -- use 'gennaro-tedesco/nvim-peekup'
+    -- use 'gennaro-tedesco/nvim-peekup'  
     
+    -- Egyszerű, minimális projekt (és egy globális) megjegyzés készítése
+    use 'JellyApple102/flote.nvim'
+
+    -- Bionikaszerű olvasás lehetősége. Ez segít tömör szövegek olvasásában
+    use 'JellyApple102/easyread.nvim'
+
 end)
 
 
