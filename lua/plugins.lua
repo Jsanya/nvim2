@@ -93,9 +93,14 @@ return require('packer').startup(function()
     --
     -- Kommentelő
     -- use 'preservim/nerdcommenter'
-    use 'b3nj5m1n/kommentary'
+     --- use 'b3nj5m1n/kommentary'
+use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+    }
 
-    -- use 'ludovicchabant/vim-gutentags}' -- Automatic tags management
 
 
     use { -- nice interface for LSP functions (among other things)
