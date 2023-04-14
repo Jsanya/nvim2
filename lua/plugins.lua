@@ -178,8 +178,8 @@ return require('packer').startup(function()
     use 'lifepillar/vim-gruvbox8'
 
     -- Szinkódokat a programkódban szinesben jeleniti meg
-    use 'norcalli/nvim-colorizer.lua'
-
+    use 'nvchad/nvim-colorizer.lua'
+       
     use 'tjdevries/nlua.nvim' 
 
 
