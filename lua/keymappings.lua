@@ -42,7 +42,7 @@ map('n', '<M-w><down', '<C-w>j')     -- le
 map('n', '<M-w><up>', '<C-w>k')      -- fel
 
 -- Az F1 gombot úgy használjuk mint az ESC-et
-map('', '<F1>', '<ESC') 
+map('i', '<F1>', '<ESC') 
 
 -- Terminálból kilépés
 map('t', '<ESC>', [[<C-\><C-n>]])

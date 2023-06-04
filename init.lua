@@ -24,6 +24,10 @@ end
 -- Érzékenyebb alapbeállítások
 require('settings')
 
+
+-- Autocmds
+require('autocmds')
+
 -- Install plugins
 -- Pluginok installálása
 require('plugins')

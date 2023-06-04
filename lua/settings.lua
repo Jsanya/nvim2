@@ -2,7 +2,7 @@
 
 -- Álnevek a könnyebb használathoz
 local vimcmd = vim.cmd     -- VimL utasítások végrehajtása
-local set = vim.opt         -- Beállitások
+local o = vim.opt         -- Beállitások
 local g = vim.g
 local api = vim.api
 
@@ -15,71 +15,96 @@ vim.g.mapleader = '-'
 vim.g.maplocalleader = ','
 
 
-set.clipboard = "unnamedplus"
+-- Alapértelmezett beállítások
+local default_options = {
+    encoding = "utf-8",
+    fileencoding = "utf-8",
+    clipboard = "unnamedplus",      -- hozzáférés a rendszer vágólapjához
+    backup = false,                 -- biztonsági mentés nincs
+    swapfile = false,               -- ne készitsen swap fájlt
+    autoread = true,                -- automatikusan újra olvassa a fáljt, ha 
+                                    -- azt egy külső program megváltoztatja
 
--- Sorok formázása
--- Behúzás, tabulátor 
-set.tabstop = 4             -- tab mérete 
-set.softtabstop = 4         
-set.shiftwidth = 4          -- eltoláskor a behúzás mérete
-set.shiftround = true       -- sorok eltolásakor kerekitse a shiftwidth legközelebbi többszörösére
-set.smartindent = true      -- okos bebúzás
-set.expandtab = true        -- tabulátorok szóközzéké alakítása
+    -- Sorok formázása
+ 
+    -- Behúzás, tabulátor 
+    tabstop = 4,                    -- szóközök száma TAB-onként
+    softtabstop = 4,
+    shiftwidth = 4,                 -- eltoláskor a szóközök száma
+    shiftround = true,              -- sorok eltolásakor kerekitse a shiftwidth
+                                    -- legközelebbi többszörösére
+    smartindent = true,             -- okos bebúzás
+    expandtab = true,               -- tabulátorok szóközzéké alakítása
 
 
-set.backspace = {"indent", "eol", "start"}
-set.textwidth = 80          -- sor széllessége
--- set.signcolumn = "yes:1"    -- jelölő oszlop bekapcs
-
-set.colorcolumn = "80"
+    -- backspace = {"indent", "eol", "start"},
+    textwidth = 80,                  -- sor széllessége
+    -- o.signcolumn = "yes:1"    -- jelölő oszlop bekapcs
+    wrap = true,                    -- hosszú sorok is láthatóvá válnak
+    colorcolumn = "80",
 
 -- Kurzor
-set.cursorline = true
-set.cursorcolumn = false
-set.scrolloff = 4
-set.wrap = true
+    cursorline = true,
+    cursorcolumn = false,
+    scrolloff = 4,
+    sidescrolloff = 4,
+    wrap = true,
 
-set.timeout = true
-set.timeoutlen=1000
+    timeout = true,
+    timeoutlen=1000,
 
+    undofile = true,
+    ruler = false,
 
+    hidden = true,
 
-set.undofile = true
-set.ruler = false
+    -- Ablakfelosztás iránya
+    splitbelow = true,
+    splitright = true,
 
-set.hidden = true
+    -- vim.cmd 'o guifont=DroidSansMono\\ Nerd\\ Font:18'
 
--- Ablakfelosztás iránya
-set.splitbelow = true
-set.splitright = true
+    completeopt = "menu,menuone,noselect",
 
--- vim.cmd 'set guifont=DroidSansMono\\ Nerd\\ Font:18'
+    listchars = { eol = "↴", trail = "." },
 
-set.completeopt = "menu,menuone,noselect"
+    termguicolors = true,
+    list = true,                             -- láthatatlan karakterek mutatása
 
-set.list = true                             -- láthatatlan karakterek mutatása
-set.listchars = { eol = "↴", trail = "." }
-
-set.termguicolors = true
-
--- Keresési beállítások
-set.incsearch = true    -- Részleges egyezéseket megjelenítő növekményes keresés.
-set.ignorecase = true   -- kis, nagybetűk figyelmen kívűl hagyása
-set.smartcase = true    -- A keresés automatikus váltása ki- és nagybetűkre, ha a keresés lekérdezés nagybetűket tartalmaz
-set.hlsearch = true     -- a keresés kiemelésének engedélyezése 
-set.showmatch = true    -- találat számainak megjelenítése
-set.inccommand = "split"
+    -- Keresési beállítások
+    incsearch = true,    -- Részleges egyezéseket megjelenítő növekményes keresés.
+    ignorecase = true,   -- kis, nagybetűk figyelmen kívűl hagyása
+    smartcase = true,    -- A keresés automatikus váltása ki- és nagybetűkre, ha a keresés lekérdezés nagybetűket tartalmaz
+    hlsearch = true,     -- a keresés kiemelésének engedélyezése 
+    showmatch = true,    -- találat számainak megjelenítése
+    inccommand = "split",
 
 -- Sorok számozása, automatizálása
-set.number = true
+    number = true,
+}
 
-vimcmd([[
-    augroup numbertoggle
-        autocmd!
-        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
-]])
+for k, v in pairs(default_options) do 
+    vim.opt[k] = v
+end 
+
+
+-- Saját parancsok
+
+-- Újratölti a konfigurációnkat
+api.nvim_create_user_command('ReloadConfig', 'source $MYVIMRC', {})
+
+
+
+
+
+-- vimcmd([[
+--augroup numbertoggle
+--autocmd!
+--autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+--autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+--augroup END
+--]])
+
 
 require('lualine').setup()
 --
@@ -87,17 +112,16 @@ require("bufferline").setup()
 
 -- Puffer megnyitásakor a kurzor az utoljára használt pozicióba áll
 vim.cmd [[
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 ]]
 
 
 -- Highlight on yank
 -- Másolandó szöveg kiemelése 1 mp-ig
-api.nvim_create_autocmd('TextYankPost', {
-    group = textyank,
-    callback = function()
-        vim.highlight.on_yank({ higroup = 'Visual', timeout = 1000})
-    end,
-})
-
-
+-- api.nvim_create_autocmd('TextYankPost', {
+--     group = textyank,
+--     callback = function()
+--         vim.highlight.on_yank({ higroup = 'Visual', timeout = 1000})
+--     end,
+-- })
+--

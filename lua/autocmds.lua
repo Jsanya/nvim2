@@ -1,4 +1,4 @@
--- Autocmds konfig
+-- Automatikus parancsok 
 local api = vim.api
 local set = vim.opt         -- Beállitások
 
@@ -7,29 +7,106 @@ local function augroup(name)
 end
 
 -- Highlight on yank
--- Másolandó rész kijelőlése
+-- Másolandó rész kiemelése 1 mp-ig a kijelőlés után
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
     callback = function()
-        vim.highlight.on_yank()
+        vim.highlight.on_yank({ higroup = 'Visual', timeout = 1000})
     end,
 })
 
-
-vim.api.nvim_create_autocmd("BufEnter", "FocusGained", "InsertLeave", {
-        group = autogrup(numbertoggle),
+-- Relativ sorszámozás bekapcsolása
+vim.api.nvim_create_autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
+        group = augroup("numbertoggleon"),
         callback = function()
             set.relativenumber = true
         end,
 })
+--  Realtiv sorszámozás kikapcsolása
+vim.api.nvim_create_autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
+        group = augroup("numbertoggleoff"),
+        callback = function()
+            set.relativenumber = false
+        end,
+})
 
 
-vimcmd([[
-    augroup numbertoggle
-        autocmd!
-        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
-]])
 
+-- close some filetypes with <q>
+-- egyéb fájltipusok bezárása <q> gombbal
+vim.api.nvim_create_autocmd("FileType", {
+    group = augroup("close_with_q"),
+    pattern = {
+        "PlenaryTestPopup",
+        "help",
+        "lspinfo",
+        "man",
+        -- "notify",
+        "qf",
+        "spectre_panel",
+        --"startuptime",
+        "tsplayground",
+        "checkhealth",
+    },
+    callback = function(event)
+        vim.bo[event.buf].buflisted = false
+        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    end,
+})
+
+-- wrap and check for spell in text filetypes
+-- tördeli és és helyesírás ellenőrzés a text tipusú fájloknál
+-- a helyesírás csak angol ezért kikapcsolva
+vim.api.nvim_create_autocmd("FileType", {
+    group = augroup("wrap_spell"),
+    pattern = { "gitcommit", "markdown" },
+    callback = function()
+        vim.opt_local.wrap = true
+        -- vim.opt_local.spell = true
+    end,
+})
+
+-- Check if we need to reload the file when it changed
+-- Megvizsgálja a fájlt és ha megváltozott újra betölti
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+    group = augroup("checktime"),
+    command = "checktime",
+})
+
+-- Auto create dir when saving a file, in case some intermediate directory does not exist
+-- Ha a fáljmentéskor a megadott könyvtár nem létezik, akkor létrehozza azt.
+-- Ez a parancs a puffer lemezre írása előtt aktívizálódik. A visszahivó
+-- függvény létrehozza a fájl szülőkönyvtárait, ha az még nem létezik.
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    group = augroup("auto_create_dir"),
+    callback = function(event)
+        if event.match:match("^%w%w+://") then
+            return
+    end
+    local file = vim.loop.fs_realpath(event.match) or event.match
+    vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+-- Automatikusan futtatja a :PacherCompile parancsot, ha a valamelyik *.lua fájl frissül
+--
+
+vim.api.nvim_create_autocmd( "BufWritePost", {
+    group = augroup("packer"),
+    pattern = "lua",
+    command = "PackerCompile",
+})
+
+
+-- A puffer megnyitásakor a kurzort az utoljára használt pozicíóban teszi
+ vim.api.nvim_create_autocmd( "BufReadPost" , { 
+    group = augroup "last_loc" , 
+    callback = function ()
+        local mark = vim.api.nvim_buf_get_mark( 0 , '"' ) 
+        local lcount = vim.api.nvim_buf_line_count( 0 ) 
+        if mark[ 1 ] > 0  and mark[ 1 ] <= lcount then 
+            pcall (vim.api.nvim_win_set_cursor, 0 , mark) 
+    end 
+  end , 
+})
 

@@ -37,6 +37,10 @@ return require('packer').startup(function()
     use { 'hoob3rt/lualine.nvim',
   	    requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
+
+    use {"williamboman/mason.nvim",
+        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    }
     
     -- Behúzások mutatása
     use 'lukas-reineke/indent-blankline.nvim'
@@ -138,7 +142,6 @@ return require('packer').startup(function()
       'stevearc/aerial.nvim',
       config = function() require('aerial').setup() end
     }
-
 
     -- Kódtöredékek (snippet) használata
     use 'dcampos/nvim-snippy'
