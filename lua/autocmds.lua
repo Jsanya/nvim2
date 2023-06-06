@@ -1,5 +1,5 @@
 -- Automatikus parancsok 
-local api = vim.api
+local api = vim.api         -- api hívások
 local set = vim.opt         -- Beállitások
 
 local function augroup(name)
@@ -41,7 +41,9 @@ vim.api.nvim_create_autocmd("FileType", {
         "help",
         "lspinfo",
         "man",
-        -- "notify",
+        "notify",
+        "git",
+        "fugitive",
         "qf",
         "spectre_panel",
         --"startuptime",
@@ -67,7 +69,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Check if we need to reload the file when it changed
--- Megvizsgálja a fájlt és ha megváltozott újra betölti
+-- Megvizsgálja a fájlt és ha megváltozott újratölti
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     group = augroup("checktime"),
     command = "checktime",
@@ -88,9 +90,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
--- Automatikusan futtatja a :PacherCompile parancsot, ha a valamelyik *.lua fájl frissül
---
+-- resize splits if window got resized
+-- Ha az ablak mérete megváltozik, akkor újraméretezi a belső felosztást 
+vim.api.nvim_create_autocmd({"VimResized"}, {
+        group = augroup("resize:splits"), 
+        callback = function()
+            vim.cmd("tabdo wincmd =")
+        end,
+})
 
+-- Automatikusan futtatja a :PacherCompile parancsot, ha a valamelyik *.lua fájl frissül
 vim.api.nvim_create_autocmd( "BufWritePost", {
     group = augroup("packer"),
     pattern = "lua",
