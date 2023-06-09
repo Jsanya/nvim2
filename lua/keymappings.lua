@@ -42,7 +42,7 @@ keymap('n', '<M-w><down', '<C-w>j')     -- le
 keymap('n', '<M-w><up>', '<C-w>k')      -- fel
 
 -- Az F1 gombot úgy használjuk mint az ESC-et
-keymap('i', '<F1>', '<ESC') 
+keymap('i', '<F1>', '<ESC>', {desc = "Kilépés az insert üzemmódból"}) 
 
 -- Terminálból kilépés
 keymap('t', '<ESC>', [[<C-\><C-n>]])
@@ -61,15 +61,17 @@ keymap('n', '<leader>nf', ':e <cfile><CR>')
 
 -- Sorok mozgatása különböző üzemmódokban:
 -- Normál módban
-keymap('n', '<A-DOWN>', ':m+1<CR>==')
+keymap('n', '<A-DOWN>', ':m+1<CR>==', {desc = "Lefelé mozgat"}) 
 keymap('n', '<A-UP>', ':m-2<CR>==')
 -- Beszúrásos módban
 keymap('i', '<A-DOWN>', '<ESC>:m+1<CR>==gi')
 keymap('i', '<A-UP>', '<ESC>:m-2<CR>==gi')
 -- Vizuális módban
+
 -- A kijelölt sorokat mozgatja
 keymap('v', '<A-DOWN>', ":m'>+1<CR>gv=gv")
 keymap('v', '<A-UP>', ":m'<-2<CR>gv=gv")
+
 -- A kijelül rész tudjuk jobbra-balra mozgatni
 keymap('x', '<', '<gv')
 keymap('x', '>', '>gv')
@@ -78,4 +80,5 @@ keymap('x', '>', '>gv')
 keymap('n', '/', [[/\v]])
 keymap('v', '/', [[/\v]])
 keymap('n', '<leader>/', ':nohlsearch<CR>')
+
 

@@ -54,3 +54,5 @@ end
 
 _G.dump(set)
 
+
+vim.notify("Minden a helyén! Szép napot kívánok! ")

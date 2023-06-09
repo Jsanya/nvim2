@@ -187,6 +187,11 @@ _G.packer_plugins = {
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.animation.nvim"] = {
+    loaded = true,
+    path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/mini.animation.nvim",
+    url = "https://github.com/echasnovski/mini.animation.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/home/juhasz/.local/share/nvim/site/pack/packer/start/neoformat",

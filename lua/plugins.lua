@@ -18,6 +18,10 @@ return require('packer').startup(function()
     -- Könyvjelzők használata
     use 'chentoast/marks.nvim'
 
+    -- független modulokból álló könyvtár
+
+    use 'echasnovski/mini.nvim'
+
     -- Terminál okosító
     -- use "akinsho/toggleterm.nvim"
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -41,7 +45,11 @@ return require('packer').startup(function()
     use {"williamboman/mason.nvim",
         run = ":MasonUpdate" -- :MasonUpdate updates registry contents
     }
-    
+   
+    use 'rcarriga/nvim-notify'
+
+
+
     -- Behúzások mutatása
     use 'lukas-reineke/indent-blankline.nvim'
 
