@@ -82,3 +82,15 @@ keymap('v', '/', [[/\v]])
 keymap('n', '<leader>/', ':nohlsearch<CR>')
 
 
+
+-- Pluginokhoz tartozó keymap beállítások
+
+-- Glow plugin
+
+local keymap = vim.api.nvim_set_keymap
+local opt1 = {noremap = true}
+local opt2 = {noremap = true, silent = true}
+
+keymap('n', '<leader>m', ':Glow<CR>', opt1)
+
+--

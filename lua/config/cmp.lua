@@ -1,166 +1,126 @@
--- autocomplete config
+-- autocomplet config
 
--- Setup nvim-cmp.
-local cmp = require'cmp'
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
-cmp.setup {
+require('luasnip.loaders.from_vscode').lazy_load()
+
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+local select_opts = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
   snippet = {
     expand = function(args)
-      require 'snippy'.expand_snippet(args.body)
+      luasnip.lsp_expand(args.body)
     end
   },
-
-
-
-
---[[
-cmp.setup {
-   snippet = {
-      expand = function(args)
-         require("luasnip").lsp_expand(args.body)
-      end,
-    },
---]]
-
-
-    --[[formatting = {
-      format = function(entry, vim_item)
-         -- load lspkind icons
-         --vim_item.kind = string.format(
-            "%s %s",
-            -- require("plugins.configs.lspkind_icons").icons[vim_item.kind],
-            -- vim_item.kind
-         )
-
-         vim_item.menu = ({
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[Lua]",
-            buffer = "[BUF]",
-         })[entry.source.name]
-
-         return vim_item
-      end,
-    },--]]
-    mapping = {
-        ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        })
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-       -- { name = "luasnip" },
-        { name = "snippy" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-    }      
-
-
-    --[[
-      ["<C-p>"] = cmp.mapping.select_prev_item(),
-      ["<C-n>"] = cmp.mapping.select_next_item(),
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm {
-         behavior = cmp.ConfirmBehavior.Replace,
-         select = true,
-      },
-      ["<Tab>"] = function(fallback)
-         if vim.fn.pumvisible() == 1 then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
-         elseif require("luasnip").expand_or_jumpable() then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-         else
-            fallback()
-         end
-      end,
-      ["<S-Tab>"] = function(fallback)
-         if vim.fn.pumvisible() == 1 then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
-         elseif require("luasnip").jumpable(-1) then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-         else
-            fallback()
-         end
-      end,
-      
-   },
-   sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "nvim_lua" },
-   },
-   --]]
-}
-
-
-  --[[
-  cmp.setup({
-    snippet = {
-      expand = function(args)
-        -- For `vsnip` user.
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
-
-        -- For `luasnip` user.
-        -- require('luasnip').lsp_expand(args.body)
-
-        -- For `ultisnips` user.
-        -- vim.fn["UltiSnips#Anon"](args.body)
-      end,
-    },
-    mapping = {
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-      { name = 'nvim_lsp' },
-
-      -- For vsnip user.
-      { name = 'vsnip' },
-
-      -- For luasnip user.
-      -- { name = 'luasnip' },
-
-      -- For ultisnips user.
-      -- { name = 'ultisnips' },
-
-      { name = 'buffer' },
-    }
-  })
-
-  -- Setup lspconfig.
-  --[[require('lspconfig')[%YOUR_LSP_SERVER%].setup {
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
-  --]]
-
-
-
---[[
-local cmp = require 'cmp'
-cmp.setup {
-  mapping = {
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    })
-  },
   sources = {
-    { name = 'nvim_lsp' },
-  }
-}
---]]
+    {name = 'path'},
+    {name = 'nvim_lsp', keyword_length = 1},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+  },
+  window = {
+    documentation = cmp.config.window.bordered()
+  },
+  formatting = {
+    fields = {'menu', 'abbr', 'kind'},
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
+
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
+  },
+  mapping = {
+    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+    ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-y>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+    ['<C-f>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    ['<C-b>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      local col = vim.fn.col('.') - 1
+
+      if cmp.visible() then
+        cmp.select_next_item(select_opts)
+      elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        fallback()
+      else
+        cmp.complete()
+      end
+    end, {'i', 's'}),
+
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item(select_opts)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+  },
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

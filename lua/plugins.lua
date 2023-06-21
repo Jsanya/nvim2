@@ -42,10 +42,41 @@ return require('packer').startup(function()
   	    requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
+    -- LSP használatához
     use {"williamboman/mason.nvim",
-        run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+        run = ":MasonUpdate"        -- :MasonUpdate updates registry contents
     }
-   
+
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+}
+
+    -- Nyelvi szerver (LSP) támogatás 
+    use {'jose-elias-alvarez/null-ls.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+    }
+
+    use { -- nice interface for LSP functions (among other things)
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'}}
+    }
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+    -- Treesitter
+    -- Csak installáláskor:
+    -- use { 'nvim-treesitter/nvim-treesitter',
+    --    run = function() require('nvim-treesitter.install').update(
+    --    { with_sync = true }) end,
+    --}
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+
+
+
+
     use 'rcarriga/nvim-notify'
 
 
@@ -104,40 +135,23 @@ return require('packer').startup(function()
 
     --
     -- Sorok kommentelése
-     use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
     }
 
 
 
-    use { -- nice interface for LSP functions (among other things)
-    'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'},
-            {'nvim-lua/plenary.nvim'}}
-    }
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-
-    -- Treesitter
-    -- Csak installáláskor:
-    -- use { 'nvim-treesitter/nvim-treesitter',
-    --    run = function() require('nvim-treesitter.install').update(
-    --    { with_sync = true }) end,
-    --}
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    use 'nvim-treesitter/nvim-treesitter-textobjects'
-
-    -- Nyelvi szerver (LSP) támogatás 
-    use 'neovim/nvim-lspconfig' -- native LSP support
-    use 'williamboman/nvim-lsp-installer'
+    -- use 'neovim/nvim-lspconfig' -- native LSP support
+    -- use 'williamboman/nvim-lsp-installer'
 
     --use 'kabouzeid/nvim-lspinstall'
 
-    -- Befejezés 
+    -- Befejezés, kiegészítés 
     use { 'hrsh7th/nvim-cmp',
-       requires = {
+        requires = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lua',
@@ -146,17 +160,27 @@ return require('packer').startup(function()
         },
     }
 
+    -- Kódrészletek (töredékek) 
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+    use "rafamadriz/friendly-snippets"
+
     use {
-      'stevearc/aerial.nvim',
-      config = function() require('aerial').setup() end
+        'stevearc/aerial.nvim',
+        config = function() require('aerial').setup() end
     }
 
     -- Kódtöredékek (snippet) használata
-    use 'dcampos/nvim-snippy'
-    use 'dcampos/cmp-snippy'
-
-    use 'honza/vim-snippets'
-
+    -- use 'dcampos/nvim-snippy'
+    -- use 'dcampos/cmp-snippy'
+    --
+    -- use 'honza/vim-snippets'
+    --
     use 'simrat39/symbols-outline.nvim'
 
 
@@ -164,7 +188,8 @@ return require('packer').startup(function()
     use 'windwp/nvim-autopairs'
 
     -- Kódformázás
-    use 'sbdchd/neoformat'
+    -- use 'sbdchd/neoformat'
+    use 'mhartington/formatter.nvim'
 
     -- Maximálja illetve visszaállítja az aktuális ablak méretét
     use 'szw/vim-maximizer'
