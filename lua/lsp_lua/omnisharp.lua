@@ -1,4 +1,4 @@
-vim.g.OmniSharp_server_use_mono = 1
+-- vim.g.OmniSharp_server_use_mono = 1
 
 -- omnisharp lsp config 
 --[[

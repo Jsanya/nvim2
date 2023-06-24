@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "use"
     ],
     "workspace.library": [
         "/home/juhasz/.config/nvim",

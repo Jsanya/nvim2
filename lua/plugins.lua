@@ -7,14 +7,14 @@ return require('packer').startup(function()
     use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
     -- Változások mutatása
     -- use 'mhinz/vim-signify'
-    
+
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'},
         -- tag = 'release' -- To use the latest release
     }
 
-    
+
     -- Könyvjelzők használata
     use 'chentoast/marks.nvim'
 
@@ -85,7 +85,7 @@ return require('packer').startup(function()
     use 'lukas-reineke/indent-blankline.nvim'
 
     -- Pufferek kezelése
-    use {'akinsho/nvim-bufferline.lua', 
+    use {'akinsho/nvim-bufferline.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
@@ -106,7 +106,7 @@ return require('packer').startup(function()
             require'alpha'.setup(require'alpha.themes.startify'.config)
         end
     }
-  
+
 
     use {
         "folke/which-key.nvim",
@@ -215,8 +215,8 @@ return require('packer').startup(function()
 
     -- Szinkódokat a programkódban szinesben jeleniti meg
     use 'nvchad/nvim-colorizer.lua'
-       
-    use 'tjdevries/nlua.nvim' 
+
+    use 'tjdevries/nlua.nvim'
 
 
     -- Vim dispatch
@@ -233,7 +233,7 @@ return require('packer').startup(function()
 
     -- Regiszterek kényelmes megtekintése, használata
     -- use 'gennaro-tedesco/nvim-peekup'  
-    
+
     -- Egyszerű, minimális projekt (és egy globális) megjegyzés készítése
     use 'JellyApple102/flote.nvim'
 

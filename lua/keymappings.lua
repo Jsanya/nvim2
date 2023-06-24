@@ -7,7 +7,7 @@ local function keymap(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local cmd = vim.cmd 
+-- local cmd = vim.cmd
 
 -- Ugyanaz mint ha ESC -t nyomnánk insert módban
 -- keymap('i', 'jk', '<Esc>')           -- jk to escape
@@ -42,7 +42,7 @@ keymap('n', '<M-w><down', '<C-w>j')     -- le
 keymap('n', '<M-w><up>', '<C-w>k')      -- fel
 
 -- Az F1 gombot úgy használjuk mint az ESC-et
-keymap('i', '<F1>', '<ESC>', {desc = "Kilépés az insert üzemmódból"}) 
+keymap('i', '<F1>', '<ESC>', {desc = "Kilépés az insert üzemmódból"})
 
 -- Terminálból kilépés
 keymap('t', '<ESC>', [[<C-\><C-n>]])
@@ -61,7 +61,7 @@ keymap('n', '<leader>nf', ':e <cfile><CR>')
 
 -- Sorok mozgatása különböző üzemmódokban:
 -- Normál módban
-keymap('n', '<A-DOWN>', ':m+1<CR>==', {desc = "Lefelé mozgat"}) 
+keymap('n', '<A-DOWN>', ':m+1<CR>==', {desc = "Lefelé mozgat"})
 keymap('n', '<A-UP>', ':m-2<CR>==')
 -- Beszúrásos módban
 keymap('i', '<A-DOWN>', '<ESC>:m+1<CR>==gi')
